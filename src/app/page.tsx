@@ -87,11 +87,15 @@ export default function EnhancedDegenDashboard() {
         headers: { 'Accept': 'application/json;version=20230302' }
       })
       const trades = response.data.data
-      const formattedTrades = trades.slice(0, 5).map((trade: any) => ({
-        id: trade.id,
-        type: trade.attributes.kind as 'buy' | 'sell',
-        amount: parseFloat(trade.attributes.volume_in_usd)
-      }))
+      const formattedTrades = trades.slice(0, 5).map(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (trade: any) => ({
+          id: trade.id,
+          type: trade.attributes.kind as 'buy' | 'sell',
+          amount: parseFloat(trade.attributes.volume_in_usd),
+        })
+      );
+      
       setRecentTrades(formattedTrades)
     } catch (err) {
       console.error('Error fetching trade data:', err)
@@ -192,7 +196,7 @@ export default function EnhancedDegenDashboard() {
 
         <div className="bg-gray-800 p-4 rounded-lg mb-6 overflow-hidden border-2 border-[#a36efd]">
           <div className="animate-marquee whitespace-nowrap">
-            {recentTrades.map((trade, index) => (
+            {recentTrades.map((trade) => (
               <span key={trade.id} className={`mr-4 ${trade.type === 'buy' ? 'text-green-400' : 'text-red-400'}`}>
                 {trade.type === 'buy' ? '🟢 Bought:' : '🔴 Sold:'} ${trade.amount.toFixed(2)}
               </span>
