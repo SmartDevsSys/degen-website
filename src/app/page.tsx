@@ -137,8 +137,8 @@ export default function EnhancedDegenDashboard() {
   const totalMarketCap = tokenDataSol.marketCap + tokenDataBase.marketCap
 
   const dominanceData = [
-    { name: 'DEGEN SOL', value: tokenDataSol.marketCap },
-    { name: 'DEGEN BASE', value: tokenDataBase.marketCap }
+    { name: 'DEGEN SOL', value: tokenDataSol.marketCap+1 },
+    { name: 'DEGEN BASE', value: tokenDataBase.marketCap-1 }
   ]
 
   const COLORS = ['#8884d8', '#82ca9d']
