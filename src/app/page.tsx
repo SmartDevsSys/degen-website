@@ -134,7 +134,7 @@ export default function EnhancedDegenDashboard() {
     return <div className="flex justify-center items-center h-screen bg-black text-white text-2xl font-bold">Loading DEGEN data...</div>
   }
 
-  const totalMarketCap = tokenDataSol.marketCap + tokenDataBase.marketCap
+  
 
   const dominanceData = [
     { name: 'DEGEN SOL', value: tokenDataSol.marketCap+1 },
