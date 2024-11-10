@@ -141,8 +141,8 @@ export default function EnhancedDegenDashboard() {
   
 
   const dominanceData = [
-    { name: 'DEGEN SOL', value: tokenDataSol.marketCap+1 },
-    { name: 'DEGEN BASE', value: tokenDataBase.marketCap-1 }
+    { name: 'DEGEN SOL', value: tokenDataSol.marketCap },
+    { name: 'DEGEN BASE', value: tokenDataBase.marketCap }
   ]
 
   const COLORS = ['#8884d8', '#82ca9d']
@@ -310,7 +310,7 @@ export default function EnhancedDegenDashboard() {
           </Card>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+        <div className="  lg:grid-cols-2 gap-6 mt-6">
           <Card className="bg-gray-900 rounded-xl shadow-lg border-2 border-[#a36efd]">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white">DEGEN Chart</CardTitle>
@@ -324,20 +324,6 @@ export default function EnhancedDegenDashboard() {
                 src="https://www.geckoterminal.com/fr/solana/pools/9sVudkgTHqrZWBQPx6id4uQpBJcf6HXyFEVqU9U7Avwe?embed=1&info=0&swaps=0"
                 frameBorder="0"
                 allow="clipboard-write"
-                allowFullScreen
-              ></iframe>
-            </CardContent>
-          </Card>
-          <Card className="bg-gray-900 rounded-xl shadow-lg border-2 border-[#a36efd]">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white">DEGEN Holders</CardTitle>
-            </CardHeader>
-            <CardContent className="h-[600px]">
-              <iframe
-                src="https://app.bubblemaps.io/sol/token/4w6bnjMbj8G7Ga8SGYgEMYVRRbEiFV54Nt8DiF1Hpump"
-                height="100%"
-                width="100%"
-                frameBorder="0"
                 allowFullScreen
               ></iframe>
             </CardContent>
