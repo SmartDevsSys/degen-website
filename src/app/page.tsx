@@ -222,7 +222,7 @@ export default function DegenLandingPage() {
                 width="100%"
                 id="geckoterminal-embed"
                 title="GeckoTerminal Embed"
-                src="https://www.geckoterminal.com/fr/solana/pools/9sVudkgTHqrZWBQPx6id4uQpBJcf6HXyFEVqU9U7Avwe?embed=1&info=0&swaps=0"
+                src="https://www.geckoterminal.com/en/solana/pools/9sVudkgTHqrZWBQPx6id4uQpBJcf6HXyFEVqU9U7Avwe?embed=1&info=0&swaps=0"
                 frameBorder="0"
                 allow="clipboard-write"
                 allowFullScreen
