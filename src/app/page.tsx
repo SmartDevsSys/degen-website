@@ -18,13 +18,8 @@ type TokenData = {
 }
 
 const styles = `
-@font-face {
-  font-family: 'PixelFont';
-  src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-}
-
-.pixel-font {
-  font-family: 'Press Start 2P', cursive;
+.comic-sans {
+  font-family: 'Comic Sans MS', cursive;
 }
 
 .degen-button {
@@ -90,7 +85,7 @@ export default function DegenLandingPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-[#4c2897] text-white pixel-font">
+    <div className="min-h-screen bg-[#4c2897] text-white comic-sans">
       <style jsx>{styles}</style>
       
       {/* Hero Section */}
@@ -133,7 +128,6 @@ export default function DegenLandingPage() {
             </div>
           </div>
           <div className="bg-gradient-to-r from-[#a36efd] to-[#4c2897] p-6 rounded-lg inline-block shadow-lg mt-8 animate-pulse ca-glow">
-            
             <p className="text-xl font-mono break-all text-white font-bold">CA : {DEGEN_SOL_ADDRESS}</p>
           </div>
         </div>
@@ -185,9 +179,9 @@ export default function DegenLandingPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">🎩 What is DEGEN?</h2>
           <p className="text-xl mb-8 text-justify">
-  Dive into the world of $DEGEN on Solana, a token created by and for true crypto degens. <br/>
-  More than just a memecoin, it’s a community-powered rebellion, taking charge with bold initiatives and unstoppable energy. Join the movement where every member is a driving force, shaping a fearless, independent future for the degen spirit.
-</p>
+            Dive into the world of $DEGEN on Solana, a token created by and for true crypto degens. <br/>
+            More than just a memecoin, it's a community-powered rebellion, taking charge with bold initiatives and unstoppable energy. Join the movement where every member is a driving force, shaping a fearless, independent future for the degen spirit.
+          </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
@@ -236,7 +230,7 @@ export default function DegenLandingPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">🎩 Ready to become DEGEN?</h2>
           <p className="text-xl mb-8">
-          The hat is purple for a reason. <br/>Unburdened by what it was. <br/> Becoming what it could have been.
+            The hat is purple for a reason. <br/>Unburdened by what it was. <br/> Becoming what it could have been.
           </p>
           <Button
             size="lg"
