@@ -8,6 +8,11 @@ import { Rocket, Users, DollarSign, TrendingUp, Twitter, Send } from 'lucide-rea
 
 const GECKOTERMINAL_API_BASE_URL = 'https://api.geckoterminal.com/api/v2'
 const DEGEN_SOL_ADDRESS = '4w6bnjMbj8G7Ga8SGYgEMYVRRbEiFV54Nt8DiF1Hpump'
+const RAYDIUM_SWAP_URL = `https://raydium.io/swap/?inputMint=So11111111111111111111111111111111111111112&outputMint=${DEGEN_SOL_ADDRESS}`
+const TELEGRAM_URL = 'https://t.me/DEGEN_COIN_SOLANA'
+const TWITTER_URL = 'https://x.com/DegenToSolana'
+const DEGEN_LOGO_URL = 'https://ipfs.io/ipfs/QmYPTQzJeg1H82iy9nsDhTbmnWuBVem37uqXNyTyTJ1L52'
+const BACKGROUND_IMAGE_URL = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1500x500.jpg-YjM0r5wePu3r2PE50HAS0hupANXyN3.jpeg'
 
 type TokenData = {
   price: number
@@ -63,6 +68,28 @@ const styles = `
 }
 `
 
+const SocialButton = ({ href, icon: Icon, label }: { href: string; icon: React.ElementType; label: string }) => (
+  <Button
+    variant="ghost"
+    size="icon"
+    className="text-white hover:text-[#a36efd]"
+    onClick={() => window.open(href, '_blank')}
+  >
+    <Icon className="h-6 w-6" />
+    <span className="sr-only">{label}</span>
+  </Button>
+)
+
+const StatCard = ({ icon: Icon, title, value }: { icon: React.ElementType; title: string; value: string }) => (
+  <Card className="bg-[#4c2897] card-glow">
+    <CardContent className="flex flex-col items-center justify-center p-6">
+      <Icon className="w-12 h-12 mb-4 text-[#a36efd]" />
+      <h3 className="text-lg font-semibold mb-2 text-white">{title}</h3>
+      <p className="text-3xl font-bold stat-value">{value}</p>
+    </CardContent>
+  </Card>
+)
+
 export default function DegenLandingPage() {
   const [tokenData, setTokenData] = useState<TokenData | null>(null)
 
@@ -96,7 +123,7 @@ export default function DegenLandingPage() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1500x500.jpg-YjM0r5wePu3r2PE50HAS0hupANXyN3.jpeg" 
+            src={BACKGROUND_IMAGE_URL}
             alt="DEGEN Background" 
             className="w-full h-full object-cover opacity-50"
           />
@@ -104,7 +131,7 @@ export default function DegenLandingPage() {
         </div>
         <div className="relative z-10 text-center">
           <img 
-            src="https://ipfs.io/ipfs/QmYPTQzJeg1H82iy9nsDhTbmnWuBVem37uqXNyTyTJ1L52" 
+            src={DEGEN_LOGO_URL}
             alt="DEGEN Logo" 
             className="w-32 h-32 mx-auto mb-4 rounded-full border-4 border-[#a36efd]" 
           />
@@ -116,7 +143,7 @@ export default function DegenLandingPage() {
             <Button
               size="lg"
               className="degen-button text-white font-bold py-4 px-8 rounded-full text-xl"
-              onClick={() => window.open('https://raydium.io/swap/?inputMint=So11111111111111111111111111111111111111112&outputMint=4w6bnjMbj8G7Ga8SGYgEMYVRRbEiFV54Nt8DiF1Hpump', '_blank')}
+              onClick={() => window.open(RAYDIUM_SWAP_URL, '_blank')}
             >
               GET $DEGEN 🎩
             </Button>
@@ -144,34 +171,10 @@ export default function DegenLandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {tokenData && (
               <>
-                <Card className="bg-[#4c2897] card-glow">
-                  <CardContent className="flex flex-col items-center justify-center p-6">
-                    <DollarSign className="w-12 h-12 mb-4 text-[#a36efd]" />
-                    <h3 className="text-lg font-semibold mb-2 text-white">Price</h3>
-                    <p className="text-3xl font-bold stat-value">${tokenData.price.toFixed(6)}</p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-[#4c2897] card-glow">
-                  <CardContent className="flex flex-col items-center justify-center p-6">
-                    <TrendingUp className="w-12 h-12 mb-4 text-[#a36efd]" />
-                    <h3 className="text-lg font-semibold mb-2 text-white">Market Cap</h3>
-                    <p className="text-3xl font-bold stat-value">${(tokenData.marketCap / 1000000).toFixed(2)}M</p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-[#4c2897] card-glow">
-                  <CardContent className="flex flex-col items-center justify-center p-6">
-                    <Rocket className="w-12 h-12 mb-4 text-[#a36efd]" />
-                    <h3 className="text-lg font-semibold mb-2 text-white">24h Volume</h3>
-                    <p className="text-3xl font-bold stat-value">${(tokenData.volume24h / 1000000).toFixed(2)}M</p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-[#4c2897] card-glow">
-                  <CardContent className="flex flex-col items-center justify-center p-6">
-                    <Users className="w-12 h-12 mb-4 text-[#a36efd]" />
-                    <h3 className="text-lg font-semibold mb-2 text-white">Holders</h3>
-                    <p className="text-3xl font-bold stat-value">{tokenData.holders.toLocaleString()}</p>
-                  </CardContent>
-                </Card>
+                <StatCard icon={DollarSign} title="Price" value={`$${tokenData.price.toFixed(6)}`} />
+                <StatCard icon={TrendingUp} title="Market Cap" value={`$${(tokenData.marketCap / 1000000).toFixed(2)}M`} />
+                <StatCard icon={Rocket} title="24h Volume" value={`$${(tokenData.volume24h / 1000000).toFixed(2)}M`} />
+                <StatCard icon={Users} title="Holders" value={tokenData.holders.toLocaleString()} />
               </>
             )}
           </div>
@@ -183,15 +186,15 @@ export default function DegenLandingPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">🎩 What is DEGEN?</h2>
           <p className="text-xl mb-8 text-justify">
-          Dive into the world of $DEGEN on Solana, a token created by and for true crypto degens.<br/>
-          More than just a memecoin, it’s a community-powered rebellion, taking charge with bold initiatives and unstoppable energy. Join the movement where every member is a driving force, shaping a fearless, independent future for the degen spirit.
+            Dive into the world of $DEGEN on Solana, a token created by and for true crypto degens.<br/>
+            More than just a memecoin, it's a community-powered rebellion, taking charge with bold initiatives and unstoppable energy. Join the movement where every member is a driving force, shaping a fearless, independent future for the degen spirit.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
               size="lg"
               className="degen-button text-white font-bold py-4 px-8 rounded-full text-xl hover:scale-105 transition-transform"
-              onClick={() => window.open('https://t.me/DEGEN_COIN_SOLANA', '_blank')}
+              onClick={() => window.open(TELEGRAM_URL, '_blank')}
             >
               <Send className="w-5 h-5 mr-2" />
               Join Our Community
@@ -199,7 +202,7 @@ export default function DegenLandingPage() {
             <Button
               size="lg"
               className="bg-[#4c2897] hover:bg-[#3d1f7a] text-white font-bold py-4 px-8 rounded-full text-xl hover:scale-105 transition-transform"
-              onClick={() => window.open('https://x.com/DegenToSolana', '_blank')}
+              onClick={() => window.open(TWITTER_URL, '_blank')}
             >
               <Twitter className="w-5 h-5 mr-2" />
               Follow on Twitter
@@ -239,7 +242,7 @@ export default function DegenLandingPage() {
           <Button
             size="lg"
             className="degen-button text-white font-bold py-4 px-8 rounded-full text-xl"
-            onClick={() => window.open('https://raydium.io/swap/?inputMint=So11111111111111111111111111111111111111112&outputMint=4w6bnjMbj8G7Ga8SGYgEMYVRRbEiFV54Nt8DiF1Hpump', '_blank')}
+            onClick={() => window.open(RAYDIUM_SWAP_URL, '_blank')}
           >
             GET $DEGEN 🎩
           </Button>
@@ -251,31 +254,15 @@ export default function DegenLandingPage() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center mb-4 md:mb-0">
             <img 
-              src="https://ipfs.io/ipfs/QmYPTQzJeg1H82iy9nsDhTbmnWuBVem37uqXNyTyTJ1L52" 
+              src={DEGEN_LOGO_URL}
               alt="DEGEN Logo" 
               className="w-10 h-10 mr-2 rounded-full" 
             />
             <p className="text-lg">© 2024 DEGEN. All rights reserved.</p>
           </div>
           <div className="flex gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-white hover:text-[#a36efd]"
-              onClick={() => window.open('https://x.com/DegenToSolana', '_blank')}
-            >
-              <Twitter className="h-6 w-6" />
-              <span className="sr-only">Twitter</span>
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-white hover:text-[#a36efd]"
-              onClick={() => window.open('https://t.me/DEGEN_COIN_SOLANA', '_blank')}
-            >
-              <Send className="h-6 w-6" />
-              <span className="sr-only">Telegram</span>
-            </Button>
+            <SocialButton href={TWITTER_URL} icon={Twitter} label="Twitter" />
+            <SocialButton href={TELEGRAM_URL} icon={Send} label="Telegram" />
           </div>
         </div>
       </footer>
