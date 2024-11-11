@@ -19,7 +19,7 @@ type TokenData = {
 
 const styles = `
 .comic-sans {
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Comic Neue', sans-serif;
 }
 
 .degen-button {
@@ -56,6 +56,10 @@ const styles = `
 
 .ca-glow {
   box-shadow: 0 0 20px rgba(163, 110, 253, 0.5);
+}
+
+* {
+  font-family: inherit;
 }
 `
 
