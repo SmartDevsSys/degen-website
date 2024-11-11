@@ -4,11 +4,10 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Sparkles, Rocket, Users, DollarSign, TrendingUp, ArrowRight, Twitter, Send } from 'lucide-react'
+import { Rocket, Users, DollarSign, TrendingUp, Twitter, Send } from 'lucide-react'
 
 const GECKOTERMINAL_API_BASE_URL = 'https://api.geckoterminal.com/api/v2'
 const DEGEN_SOL_ADDRESS = '4w6bnjMbj8G7Ga8SGYgEMYVRRbEiFV54Nt8DiF1Hpump'
-const DEGEN_POOL_ADDRESS = '9sVudkgTHqrZWBQPx6id4uQpBJcf6HXyFEVqU9U7Avwe'
 
 type TokenData = {
   price: number
@@ -113,7 +112,7 @@ export default function DegenLandingPage() {
           <h1 className="text-6xl md:text-8xl font-extrabold mb-4 animate-pulse">
             $DEGEN
           </h1>
-          <p className="text-2xl md:text-3xl mb-8">The hat is purple for a reason.</p>
+          <p className="text-2xl md:text-3xl mb-8">Made by Degens, For Degens</p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
             <Button
               size="lg"
@@ -185,10 +184,11 @@ export default function DegenLandingPage() {
       <section className="py-16 px-4 bg-[#a36efd]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">🎩 What is DEGEN?</h2>
-          <p className="text-xl mb-8">
-            DEGEN is not just another memecoin. It's a movement, a community, and a ticket to the wildest ride in the crypto space. 
-            Built on Solana for lightning-fast transactions and powered by pure degeneracy, DEGEN is here to flip the script on traditional finance.
-          </p>
+          <p className="text-xl mb-8 text-justify">
+  Dive into the world of $DEGEN on Solana, a token created by and for true crypto degens. <br/>
+  More than just a memecoin, it’s a community-powered rebellion, taking charge with bold initiatives and unstoppable energy. Join the movement where every member is a driving force, shaping a fearless, independent future for the degen spirit.
+</p>
+
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
               size="lg"
@@ -236,7 +236,7 @@ export default function DegenLandingPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">🎩 Ready to become DEGEN?</h2>
           <p className="text-xl mb-8">
-           Unburdened by what it was. Becoming what it could have been.
+          The hat is purple for a reason. <br/>Unburdened by what it was. <br/> Becoming what it could have been.
           </p>
           <Button
             size="lg"
