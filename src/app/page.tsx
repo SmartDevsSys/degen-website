@@ -186,8 +186,8 @@ export default function DegenLandingPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">🎩 What is DEGEN?</h2>
           <p className="text-xl mb-8 text-justify">
-            Dive into the world of $DEGEN on Solana, a token created by and for true crypto degens.<br/>
-            More than just a memecoin, it's a community-powered rebellion, taking charge with bold initiatives and unstoppable energy. Join the movement where every member is a driving force, shaping a fearless, independent future for the degen spirit.
+          Dive into the world of $DEGEN on Solana, a token created by and for true crypto degens.<br/>
+          More than just a memecoin, it’s a community-powered rebellion, taking charge with bold initiatives and unstoppable energy. Join the movement where every member is a driving force, shaping a fearless, independent future for the degen spirit.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
